@@ -97,6 +97,10 @@ class WorkflowStore:
                 )
                 """
             )
+            # The table lives in Supabase's API-exposed public schema, but only
+            # the server-side Postgres connection may access workflow records.
+            cursor.execute("ALTER TABLE pitch_workflows ENABLE ROW LEVEL SECURITY")
+            cursor.execute("REVOKE ALL ON TABLE pitch_workflows FROM anon, authenticated")
 
     def _load_file(self) -> None:
         if not self._path.exists():
