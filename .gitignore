@@ -1,0 +1,31 @@
+# Secrets
+backend.env
+.env
+.env.*
+!.env.example
+
+# Python
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/*.py[cod]
+
+# Node / frontend
+**/node_modules/
+frontend/dist/
+**/*.tsbuildinfo
+
+# Hosting metadata
+**/.vercel/
+
+# Generated and local runtime data
+backend/output/
+backend/tmp/
+backend/data/pitch_workflows.json
+
+# Editor / OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+

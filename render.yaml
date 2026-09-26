@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: marsh-policy-intelligence-api
+    runtime: docker
+    region: singapore
+    plan: free
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /api/v1/health
+    autoDeploy: true
+    numInstances: 1
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        sync: false
+      - key: RATE_LIMIT_ENABLED
+        value: "true"
+      - key: RATE_LIMIT_WINDOW_SECONDS
+        value: "300"
+      - key: RATE_LIMIT_REQUESTS
+        value: "30"
